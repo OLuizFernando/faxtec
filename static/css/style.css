@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Konsens";
+  src: url("../fonts/KonsensRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Konsens";
+  src: url("../fonts/KonsensSemibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+.konsens-regular {
+  font-family: "Konsens", sans-serif;
+  font-weight: 400;
+}
+
+.konsens-semibold {
+  font-family: "Konsens", sans-serif;
+  font-weight: 600;
+}
