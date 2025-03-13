@@ -8,7 +8,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <div className="flex flex-col h-screen">
       <Navbar />
-      <Home />
+      <div className="flex-grow overflow-y-auto content-center">
+        <Home />
+      </div>
     </div>
   </StrictMode>
 );
