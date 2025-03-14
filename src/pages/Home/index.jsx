@@ -5,9 +5,7 @@ function Home() {
   return (
     <>
       <Form />
-      <div className="flex items-center justify-center">
-        <Messages />
-      </div>
+      <Messages />
     </>
   );
 }
