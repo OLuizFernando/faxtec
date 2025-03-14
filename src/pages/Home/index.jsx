@@ -3,10 +3,10 @@ import Messages from "../../components/Messages";
 function Home() {
   return (
     <>
-      <h1 className="text-center text-2xl mx-10 mb-5 sm:mb-10 md:mb-14">
+      <h1 className="text-center text-2xl mx-10 mb-5 sm:mb-10 md:mb-14 mt-10 sm:mt-14 md:mt-20">
         Publique mensagens <span className="font-semibold">anônimas</span> para o nome que quiser.
       </h1>
-      <form className="flex flex-col items-center justify-center grow min-h-0 p-4">
+      <form className="flex flex-col items-center justify-center grow min-h-0 p-4 mb-5">
         <div className="mb-5 w-full max-w-lg">
           <label htmlFor="addressee" className="text-gray-600 text-lg">
             Destinatário
@@ -23,10 +23,17 @@ function Home() {
           </div>
         </div>
 
-        <button type="submit" className="text-white bg-red-800 hover:bg-red-900 hover:cursor-pointer focus:ring-4 focus:ring-red-300 rounded-md px-5 py-2.5 me-2 mb-2 focus:outline-none">
+        <button type="submit" className="text-white bg-red-800 hover:bg-red-900 hover:cursor-pointer focus:ring-4 focus:ring-red-300 rounded-md px-5 py-2.5 mb-2 focus:outline-none">
           Publicar
         </button>
       </form>
+
+      <div className="flex flex-col items-center justify-center mb-10 text-gray-600">
+        <h2 className="mb-3">Veja mensagens que outros anônimos já enviaram.</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+        </svg>
+      </div>
 
       <div className="flex items-center justify-center">
         <Messages />

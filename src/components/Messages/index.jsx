@@ -6,7 +6,7 @@ function Messages() {
 
   async function getMessages() {
     const apiResponse = await api.get("/messages");
-    setMessages([]);
+    setMessages(apiResponse.data.sort(() => Math.random() - 0.5));
   }
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Messages() {
             <span className="font-semibold text-lg">Mensagem:</span> {message.message}
           </p>
           <p>
-            <span className="font-semibold text-lg">Data:</span> {message.date}
+            <span className="font-semibold text-lg">Data:</span> {new Date(message.date).toLocaleDateString("pt-BR")}
           </p>
         </div>
       ))}
