@@ -1,6 +1,36 @@
+import { useRef } from "react";
 import Messages from "../../components/Messages";
+import api from "../../services/api.js";
 
 function Home() {
+  const addresseeInput = useRef();
+  const messageInput = useRef();
+
+  async function sendMessage() {
+    const addressee = addresseeInput.current.value;
+    const message = messageInput.current.value;
+
+    const apiResponse = await api.post(
+      "/messages",
+      {
+        addressee,
+        message,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (apiResponse.status === 201) {
+      alert("Mensagem publicada com sucesso!");
+      window.location.reload();
+    } else {
+      alert("Algo deu errado.");
+    }
+  }
+
   return (
     <>
       <h1 className="text-center text-2xl mx-10 mb-5 sm:mb-10 md:mb-14 mt-10 sm:mt-14 md:mt-20">
@@ -12,18 +42,18 @@ function Home() {
             Destinatário
           </label>
           <div className="mt-2 mb-5">
-            <input type="text" name="addressee" className="w-full rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 text-md" required />
+            <input ref={addresseeInput} type="text" name="addressee" className="w-full rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 text-md" required />
           </div>
 
           <label htmlFor="message" className="text-gray-600 text-lg">
             Mensagem
           </label>
           <div className="mt-2">
-            <textarea name="message" className="w-full h-40 rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 text-md" required />
+            <textarea ref={messageInput} name="message" className="w-full h-40 rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 text-md" required />
           </div>
         </div>
 
-        <button type="submit" className="text-white bg-red-800 hover:bg-red-900 hover:cursor-pointer focus:ring-4 focus:ring-red-300 rounded-md px-5 py-2.5 mb-2 focus:outline-none">
+        <button onClick={sendMessage} type="button" className="text-white bg-red-800 hover:bg-red-900 hover:cursor-pointer focus:ring-4 focus:ring-red-300 rounded-md px-5 py-2.5 mb-2 focus:outline-none">
           Publicar
         </button>
       </form>
