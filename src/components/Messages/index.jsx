@@ -14,7 +14,18 @@ function Messages() {
   }, []);
 
   const [search, setSearch] = useState("");
-  console.log(search);
+  const filteredMessages = messages.filter((message) =>
+    message.addressee
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .includes(
+        search
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+      )
+  );
 
   return (
     <>
@@ -55,7 +66,7 @@ function Messages() {
       </div>
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {messages.map((message) => (
+          {filteredMessages.map((message) => (
             <div
               key={message.id}
               className="p-5 m-2 rounded-md bg-red-800 text-white"
